@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: white;
+}
+
+.page-link {
+  color: #212833 !important;
+}
+
+.nav-dropdown .active {
+  color: #1691b9 !important;
+}
+
+.nav-dropdown .navbar-brand {
+  color: #1691b9 !important;
+}
+
+.nav-dropdown .dropdown > div {
+  background-color: #212833;
+}
+
+.nav-dropdown a:hover {
+  color: #1691b9 !important;
+}

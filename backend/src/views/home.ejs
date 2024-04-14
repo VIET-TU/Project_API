@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="user-infor-container">
+          <form method="POST" action="/users/create-user">
+            <div class="mb-3 col-6 mt-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Email address</label
+              >
+              <input
+                name="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="col-6"></div>
+            <div class="mb-3 col-6">
+              <label for="exampleInputPassword1" class="form-label"
+                >Password</label
+              >
+              <input
+                name="password"
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+              />
+            </div>
+            <div class="col-6"></div>
+            <div class="mb-3 col-6">
+              <label for="exampleInputPassword1" class="form-label"
+                >Username</label
+              >
+              <input
+                name="username"
+                type="text"
+                class="form-control"
+                id="exampleInputPassword1"
+              />
+            </div>
+            <div class="col-6"></div>
+            <div class="mb-3 col-6">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="users-table mt-3">
+          <h3>Table users</h3>
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Email</th>
+                <th scope="col">Username</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% userList.forEach( function(item,index) { %>
+              <tr>
+                <th scope="row"><%= index +1 %></th>
+                <td><%= item.email %></td>
+                <td><%=item.username%></td>
+                <td>
+                  <form
+                    style="display: inline"
+                    action="/edit-user/<%= item.id %>"
+                    method="POST"
+                  >
+                    <button class="btn btn-warning">Edit</button>
+                  </form>
+                  <form
+                    style="display: inline"
+                    action="/delete-user/<%= item.id %>"
+                    method="post"
+                  >
+                    <button class="btn btn-danger">Delete</button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
